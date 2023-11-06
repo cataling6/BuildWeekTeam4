@@ -85,6 +85,7 @@ const questions = [
 let punteggioUtente = 0;
 //variabile per tenere traccia delle domande (sarà il nostro indice PAGINA!!! da non confondere con indice del ciclo dove cicleremo l'array delle domande)
 let questionNumber = 0;
+<<<<<<< Updated upstream
 
 let arrayRisposteUser = [];
 
@@ -99,3 +100,5 @@ function checkAnswer(risposta) {
     }
   }
 }
+=======
+>>>>>>> Stashed changes
