@@ -15,81 +15,28 @@ body {
   background-size: cover;
 }
 
-.welcome {
-  color: white;
-  margin: 40px 120px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-}
-
-.welcome h1 {
-  font-family: "Outfit", sans-serif;
-  font-size: 60px;
-  font-weight: 300;
-  line-height: 45px;
-  margin-bottom: 50px;
-}
-
-.welcome h2 {
-  color: #d20094;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.welcome ul {
-  margin: 30px;
-}
-
-.welcome ul li {
-  padding: 5px 0;
-}
-
-.proceed {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 130px;
-  align-items: center;
-}
-
-.checkbox {
-  position: relative;
-  display: flex;
-  gap: 10px;
-}
-
-.welcome button {
-  padding: 20px 60px;
-  border: none;
-  background-color: #00ffff;
-  font-size: large;
-  font-weight: 800;
-  box-shadow: 0px 0px 40px #00ffff;
-}
-
-.domanda h1{
+.domanda h1 {
   color: white;
   text-align: center;
   margin-top: 7%;
   font-size: 60px;
-  font-family:"Inter", sans-serif ;
+  font-family: "Inter", sans-serif;
 }
-.contenitore{
-display: flex;
-flex-direction: column;
-align-items: center;
-
-
+.contenitore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.bottoniRisposta{
+
+/*stile bottoni*/
+.bottoniRisposta {
   margin-top: 4%;
   display: flex;
   justify-content: center;
   width: 600px;
   flex-wrap: wrap;
-
 }
-.bottoniRisposta button{
+.bottoniRisposta button {
   height: 50px;
   width: 280px;
   font-size: 15px;
@@ -100,12 +47,11 @@ align-items: center;
   /* border-bottom-color: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(49,41,90,0.6699929971988796) 50%); */
   background-color: rgb(255, 255, 255, 0.1);
   color: white;
-  
 }
-button:hover{
+button:hover {
   background-color: #d20094;
 }
-.totaleDomande{
+.totaleDomande {
   margin-top: 8%;
   color: white;
   font-size: 20px;
