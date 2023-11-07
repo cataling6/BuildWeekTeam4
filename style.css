@@ -72,6 +72,7 @@ body {
   text-align: center;
   margin-top: 7%;
   font-size: 60px;
+  font-family:"Inter", sans-serif ;
 }
 .contenitore{
 display: flex;
@@ -84,7 +85,7 @@ align-items: center;
   margin-top: 4%;
   display: flex;
   justify-content: center;
-  width: 55%;
+  width: 600px;
   flex-wrap: wrap;
 
 }
@@ -95,11 +96,18 @@ align-items: center;
   border-radius: 50px;
   margin-inline: 10px;
   margin-block: 8px;
-  border: white 2px;
+  border: white 2px outset;
+  /* border-bottom-color: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(49,41,90,0.6699929971988796) 50%); */
   background-color: rgb(255, 255, 255, 0.1);
   color: white;
   
 }
 button:hover{
   background-color: #d20094;
+}
+.totaleDomande{
+  margin-top: 8%;
+  color: white;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
 }
