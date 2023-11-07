@@ -66,3 +66,40 @@ body {
   font-weight: 800;
   box-shadow: 0px 0px 40px #00ffff;
 }
+
+.domanda h1{
+  color: white;
+  text-align: center;
+  margin-top: 7%;
+  font-size: 60px;
+}
+.contenitore{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+}
+.bottoniRisposta{
+  margin-top: 4%;
+  display: flex;
+  justify-content: center;
+  width: 55%;
+  flex-wrap: wrap;
+
+}
+.bottoniRisposta button{
+  height: 50px;
+  width: 280px;
+  font-size: 15px;
+  border-radius: 50px;
+  margin-inline: 10px;
+  margin-block: 8px;
+  border: white 2px;
+  background-color: rgb(255, 255, 255, 0.1);
+  color: white;
+  
+}
+button:hover{
+  background-color: #d20094;
+}
