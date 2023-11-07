@@ -84,18 +84,39 @@ const questions = [
 //variabile che andremo ad incrementare d 1 ogni volta che l'utente risponde correttamente
 let punteggioUtente = 0;
 //variabile per tenere traccia delle domande (sarà il nostro indice PAGINA!!! da non confondere con indice del ciclo dove cicleremo l'array delle domande)
-let questionNumber = 0;
+let questionNumber = 1;
+let buttonRisposta = document.querySelectorAll("button");
+//
+let rispostaSelezionata = "";
 
+//array contenitore tutte le risposte => abbiamo un array di array quindi da studiarsi come ciclare [i][j]
 let arrayRisposteUser = [];
+//function per creare l'array sopra
+for (let i = 0; i < questions.length; i++) {
+  questions[i].incorrect_answers.push(questions[i].correct_answer);
+  arrayRisposteUser.push(questions[i].incorrect_answers);
+}
+
+for (let i = 0; i < buttonRisposta.length; i++) {
+  buttonRisposta[i].addEventListener("click", function () {
+    salvaRisposta(buttonRisposta[i].innerText);
+    console.log(rispostaSelezionata);
+  });
+}
 
 //check risposta apparentemente funzionante
-function checkAnswer(risposta) {
+const salvaRisposta = function (risposta) {
+  rispostaSelezionata = risposta;
   for (i = 0; i < questions.length; i++) {
-    if (risposta === questions[i].correct_answer) {
+    if (rispostaSelezionata === questions[i].correct_answer) {
       console.log("corretto");
       punteggioUtente += 1;
+      questionNumber++;
+      break;
     } else {
       console.log("sbagliato");
+      questionNumber++;
+      break;
     }
   }
-}
+};
