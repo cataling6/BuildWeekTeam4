@@ -1,3 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .logo {
-    width: 18%;
+  width: 10%;
+  margin: 40px 120px;
+}
+
+body {
+  background-image: url("./assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome {
+  color: white;
+  margin: 40px 120px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+}
+
+.welcome h1 {
+  font-family: "Outfit", sans-serif;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 45px;
+  margin-bottom: 50px;
+}
+
+.welcome h2 {
+  color: #d20094;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.welcome ul {
+  margin: 30px;
+}
+
+.welcome ul li {
+  padding: 5px 0;
+}
+
+.proceed {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 130px;
+  align-items: center;
+}
+
+.checkbox {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+.welcome button {
+  padding: 20px 60px;
+  border: none;
+  background-color: #00ffff;
+  font-size: large;
+  font-weight: 800;
+  box-shadow: 0px 0px 40px #00ffff;
 }
