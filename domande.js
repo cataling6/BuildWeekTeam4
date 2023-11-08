@@ -87,7 +87,7 @@ let punteggioUtente = 0;
 let questionNumber = 0;
 let buttonRisposta = document.querySelector(".bottoniRisposta");
 let trovaDomanda = document.querySelector(".domanda h1");
-trovaDomanda.innerText = questions[questionNumber].question;
+let indice = document.querySelector("#index");
 
 let rispostaSelezionata = "";
 
@@ -110,6 +110,7 @@ const creaBottoni = function () {
   for (let j = 0; j < arrayRisposteUser[questionNumber].length; j++) {
     buttonRisposta.innerHTML += `<button>${arrayRisposteUser[questionNumber][j]}</button>`;
     trovaDomanda.innerText = questions[questionNumber].question;
+    indice.innerText = ` ${questionNumber + 1}`;
   }
   aggiungiListener();
 };
