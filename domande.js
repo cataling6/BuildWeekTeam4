@@ -84,13 +84,17 @@ const questions = [
 //variabile che andremo ad incrementare d 1 ogni volta che l'utente risponde correttamente
 let punteggioUtente = 0;
 //variabile per tenere traccia delle domande (sarà il nostro indice PAGINA!!! da non confondere con indice del ciclo dove cicleremo l'array delle domande)
-let questionNumber = 0;
+let questionNumber = 9;
+let seconds = 0;
+let timeCountdown = 60;
+const total = 60;
 let buttonRisposta = document.querySelector(".bottoniRisposta");
 let trovaDomanda = document.querySelector(".domanda p");
 let indice = document.querySelector("#index");
-
+//elementi timer - elapsed sono i secondi + il testo; timer è la grafica
+const elapsed = document.querySelector("#elapsed");
+const timer = document.querySelector("#timer");
 let rispostaSelezionata = "";
-
 let arrayRisposteUser = [];
 
 for (let i = 0; i < questions.length; i++) {
@@ -108,10 +112,16 @@ const aggiungiListener = function () {
 
 let finish = function () {
   document.querySelector("footer").innerHTML = "";
-  trovaDomanda.innerText = "Il tuo punteggio finale è " + punteggioUtente + "/" + questions.length;
+  document.querySelector("#timer").innerHTML = "";
+  clearInterval(timerInterval);
+  trovaDomanda.innerText = "Il tuo punteggio finale è " + punteggioUtente + "/" + questions.length; //
 };
 
+//renderizzo i bottoni e le domande a seoncda dell'indice
 const creaBottoni = function () {
+  //resetto contatori al click sul pulsante
+  seconds = 0;
+  timeCountdown = 60;
   buttonRisposta.innerHTML = "";
   for (let j = 0; j < arrayRisposteUser[questionNumber].length; j++) {
     buttonRisposta.innerHTML += `<button>${arrayRisposteUser[questionNumber][j]}</button>`;
@@ -124,6 +134,10 @@ const creaBottoni = function () {
   if (questionNumber === 9) {
     for (let i = 0; i < buttonRisposta.children.length; i++) {
       buttonRisposta.children[i].addEventListener("click", function () {
+        buttonRisposta.innerHTML = "";
+        elapsed.innerHTML = "";
+        timer.style.background = `conic-gradient(transparent 0%, transparent 0% `;
+        clearInterval(timerInterval);
         finish();
       });
     }
@@ -154,14 +168,6 @@ const salvaRisposta = function (risposta) {
   }
 };
 
-//timer
-let seconds = 0;
-let timeCountdown = 60;
-let total = 60;
-
-const elapsed = document.querySelector("#elapsed");
-const timer = document.querySelector("#timer");
-
 function countdown() {
   const percentuale = (seconds / total) * 100;
   timer.style.background = `conic-gradient(transparent ${percentuale}%, red ${percentuale + 2}% `;
@@ -172,9 +178,15 @@ function countdown() {
     </div>`;
   timeCountdown--;
   seconds++;
-  if (seconds == 61) {
+  if (seconds > 60 && questionNumber < 9) {
     elapsed.innerHTML = `<div class="master">Tempo Scaduto!</div>`;
-    clearInterval(timerInterval);
+    seconds = 0;
+    timeCountdown = 60;
+    questionNumber++;
+    creaBottoni();
+  } else if (seconds > 60 && questionNumber === 9) {
+    buttonRisposta.innerHTML = "";
+    finish();
   }
 }
-const timerInterval = setInterval(countdown, 1000);
+const timerInterval = setInterval(countdown, 100);
