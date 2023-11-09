@@ -123,7 +123,14 @@ let finish = function () {
   clearInterval(timerInterval);
 
   //ESPOSIZIONE PUNTEGGIO FINALE CON CONTA LUNGHEZZA ARRAY DOMANDE DINAMICOHHHHH
-  trovaDomanda.innerText = "Il tuo punteggio finale è " + punteggioUtente + "/" + questions.length; //
+
+  if (punteggioUtente >= 6) {
+    trovaDomanda.innerHTML = "Il tuo punteggio finale è " + punteggioUtente + "/" + questions.length + "<br><br>";
+    trovaDomanda.innerHTML += "Hai superato la prova, complimenti!";
+  } else {
+    trovaDomanda.innerHTML = "Il tuo punteggio finale è " + punteggioUtente + "/" + questions.length + "<br><br>";
+    trovaDomanda.innerHTML += "Non hai superato la prova... consulta il tuo insegnante.";
+  }
 };
 
 //RENDERIZZO I BOTTONI E LE DOMANDE A SECONDA DELL'INDICE
@@ -188,12 +195,12 @@ function countdown() {
   const percentuale = (seconds / total) * 100;
 
   //CREO IL CONO CON CONIC-GRADIENT DANDO COME PERCENTUALE DINAMICA OGNI STEP CHE INCREMENTO I SECONDI; IL "percentuale+2" SERVE A DARE L'EFFETTO SFUMATO ALLA LINGUETTA
-  timer.style.background = `conic-gradient(transparent ${percentuale}%, red ${percentuale + 2}% `;
+  timer.style.background = `conic-gradient(transparent ${percentuale}%, #00ffff ${percentuale + 2}% `;
 
   //MI FORMATTO IL TESTO ALL'INTERNO DEL TIMER
   elapsed.innerHTML = `<div class="master">
       <div>Seconds</div>
-      <div>${timeCountdown}</div>
+      <div class="counter">${timeCountdown}</div>
       <div>Remaining</div>
     </div>`;
 

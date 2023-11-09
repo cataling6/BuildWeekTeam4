@@ -78,16 +78,19 @@ footer {
 
 /*SEZIONE TIMER*/
 /*position relative -> riferimento per elapsed*/
+
 #timer {
   margin-right: 5vh;
   margin-top: 5vh;
   min-width: 200px;
   min-height: 200px;
   border-radius: 50%;
+
   position: relative;
 }
 /*con absolute lo "lego" al relative sopra dichiarato */
 #elapsed {
+  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -106,4 +109,8 @@ footer {
 .header {
   display: flex;
   justify-content: space-between;
+}
+
+.counter {
+  font-size: 55px;
 }
