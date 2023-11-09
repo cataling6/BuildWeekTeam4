@@ -105,6 +105,11 @@ const aggiungiListener = function () {
   }
 };
 
+let finish = function () {
+  document.querySelector('footer').innerHTML= ""
+  trovaDomanda.innerText = "Il tuo punteggio finale è " + punteggioUtente
+}
+
 const creaBottoni = function () {
   buttonRisposta.innerHTML = "";
   for (let j = 0; j < arrayRisposteUser[questionNumber].length; j++) {
@@ -113,6 +118,15 @@ const creaBottoni = function () {
     indice.innerText = ` ${questionNumber + 1}`;
   }
   aggiungiListener();
+
+  console.log(questionNumber);
+  if(questionNumber === 9) {
+    for (let i = 0; i < buttonRisposta.children.length; i++) {
+      buttonRisposta.children[i].addEventListener("click", function() {
+        finish()
+      });
+    }
+  }
 };
 
 creaBottoni();
