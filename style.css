@@ -77,20 +77,21 @@ footer {
 }
 
 /*SEZIONE TIMER*/
+/*position relative -> riferimento per elapsed*/
 #timer {
   margin-right: 5vh;
   margin-top: 5vh;
   min-width: 200px;
   min-height: 200px;
-
   border-radius: 50%;
   position: relative;
 }
+/*con absolute lo "lego" al relative sopra dichiarato */
 #elapsed {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /*mi centro completamente le scritte */
   font-size: 24px;
 }
 
