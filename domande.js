@@ -84,7 +84,7 @@ const questions = [
 //variabile che andremo ad incrementare d 1 ogni volta che l'utente risponde correttamente
 let punteggioUtente = 0;
 //variabile per tenere traccia delle domande (sarà il nostro indice PAGINA!!! da non confondere con indice del ciclo dove cicleremo l'array delle domande)
-let questionNumber = 9;
+let questionNumber = 0;
 let seconds = 0;
 let timeCountdown = 60;
 const total = 60;
@@ -189,4 +189,4 @@ function countdown() {
     finish();
   }
 }
-const timerInterval = setInterval(countdown, 100);
+const timerInterval = setInterval(countdown, 1000);
