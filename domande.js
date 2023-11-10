@@ -87,15 +87,12 @@ const questions = [
 let punteggioUtente = 0;
 //variabile per tenere traccia delle domande (sarà il nostro indice PAGINA!!! da non confondere con indice del ciclo dove cicleremo l'array delle domande)
 let questionNumber = 0;
-let seconds = 0;
-let timeCountdown = 60;
-const total = 60;
+// let seconds = 0;
+// let timeCountdown = 60;
+// const total = 60;
 let buttonRisposta = document.querySelector(".bottoniRisposta");
 let trovaDomanda = document.querySelector(".domanda p");
 let indice = document.querySelector("#index");
-//elementi timer - elapsed sono i secondi + il testo; timer è la grafica
-const elapsed = document.querySelector("#elapsed");
-const timer = document.querySelector("#timer");
 let rispostaSelezionata = "";
 let arrayRisposteUser = [];
 
@@ -119,8 +116,6 @@ const aggiungiListener = function () {
 //FUNZIONE CHE ESEGUE I COMANDI A FINE CICLO / FINE DOMANDE
 let finish = function () {
   document.querySelector("footer").innerHTML = "";
-  document.querySelector("#timer").innerHTML = "";
-  clearInterval(timerInterval);
 
   //ESPOSIZIONE PUNTEGGIO FINALE CON CONTA LUNGHEZZA ARRAY DOMANDE DINAMICOHHHHH
 
@@ -136,8 +131,6 @@ let finish = function () {
 //RENDERIZZO I BOTTONI E LE DOMANDE A SECONDA DELL'INDICE
 const creaBottoni = function () {
   //RESETTO CONTATORI AL CLICK SUL PULSANTE
-  seconds = 0;
-  timeCountdown = 60;
   buttonRisposta.innerHTML = "";
 
   //CICLO L'ARRAY DI RISPOSTE CREATO SOPRA
@@ -157,8 +150,6 @@ const creaBottoni = function () {
     for (let i = 0; i < buttonRisposta.children.length; i++) {
       buttonRisposta.children[i].addEventListener("click", function () {
         buttonRisposta.innerHTML = "";
-        timer.style.background = `conic-gradient(transparent 0%, transparent 0% `; //SOLUZIONE POCO ELEGANTE MA LA PIU EFFICACE: OSCURO TUTTA LA GRAFICA DEL TIMER
-        clearInterval(timerInterval); // STOPPO LA FUNZIONE SETINTERVAL
         finish(); // RICHIAMO LA PAGINA CON I RISULTATI
       });
     }
@@ -189,37 +180,20 @@ const salvaRisposta = function (risposta) {
   }
 };
 
-//FUNZIONE TIMER CHE SI DIVIDE IN 2 PARTI: PARTE JS QUI SOTTO E PARTE CSS EVIDENZIATA NEL FILE
-function countdown() {
-  //MI CREO LA PERCENTUALE CHE SARA' IL MIO STEP DA 0 A 60 SECONDI
-  const percentuale = (seconds / total) * 100;
+// TIMER
+let seconds = 0
+let countdown = 60
 
-  //CREO IL CONO CON CONIC-GRADIENT DANDO COME PERCENTUALE DINAMICA OGNI STEP CHE INCREMENTO I SECONDI; IL "percentuale+2" SERVE A DARE L'EFFETTO SFUMATO ALLA LINGUETTA
-  timer.style.background = `conic-gradient(transparent ${percentuale}%, #00ffff ${percentuale + 2}% `;
+const timer = document.querySelector(".timer")
+timer.innerHTML = 
+`<p> SECONDS </p>
+<p class="time"> ${countdown} </p>
+<p> REMAINING </p>`
 
-  //MI FORMATTO IL TESTO ALL'INTERNO DEL TIMER
-  elapsed.innerHTML = `<div class="master">
-      <div>Seconds</div>
-      <div class="counter">${timeCountdown}</div>
-      <div>Remaining</div>
-    </div>`;
+countdown --
+seconds ++
 
-  //USATO timeCountDown e seconds PER POTER GESTIRE LA GRAFICA IN SENSO ORARIO E IL DECREMENTO DEI SECONDI DA 60 A 0
-  timeCountdown--;
-  seconds++;
+if (seconds>60 && questionNumber<9) {
 
-  //CONTROLLO SE TIMER SCADUTO E(!!!) NON ULTIMA RISPOSTA, ALLORA VADO AVANTI CHIAMADO LA NUOVA DOMANDA
-  if (seconds > 60 && questionNumber < 9) {
-    elapsed.innerHTML = `<div class="master">Tempo Scaduto!</div>`;
-    seconds = 0;
-    timeCountdown = 60;
-    questionNumber++;
-    creaBottoni();
-    //SE TIMER SCADUTO E(!!!) ULTIMA DOMANDA, CHIAMO FINISH SVUOTANDO TUTTO IL CONTENUTO CHE NON CI SERVE
-  } else if (seconds > 60 && questionNumber === 9) {
-    buttonRisposta.innerHTML = "";
-    finish();
-  }
 }
-//INIZIALIZZO TIMER
-const timerInterval = setInterval(countdown, 1000);
+
